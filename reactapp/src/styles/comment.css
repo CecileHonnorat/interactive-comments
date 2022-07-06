@@ -1,0 +1,153 @@
+.commentsList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.comment{
+    display: flex;
+    align-items: center;
+    border-radius: 7px;
+    width: 52%;
+    height: 150px;
+    background-color: white;
+    margin: 10px;
+}
+.avatar{
+    width: 30px;
+    margin-right: 15px;
+    margin-left: 10px;
+}
+.countButton{
+    background-color: hsl(228, 33%, 97%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 12px;
+    max-height: 70px;
+}
+.countButton:hover{
+    cursor: pointer;
+}
+.userComment{
+    display: flex;
+    flex-direction: column;
+    width: fill-available;
+}
+.commentHead{
+    display: flex;
+    justify-content: space-between;
+}
+.userInfo{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-top: 10px;
+}
+.content{
+    display: block;
+    color: hsl(211, 10%, 45%);
+    margin-left: 10px;
+    margin-right: 15px;
+    margin-top: -15px;
+    position: relative;
+}
+.action{
+    color: hsl(238, 40%, 52%);
+    font-weight: 500;
+}
+.username{
+    font-weight: 500;
+    margin-right: 15px;
+}
+.date{
+    color: hsl(211, 10%, 45%);
+}
+.reply{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 1.5rem;
+}
+.action:hover{
+    color: hsl(239, 57%, 85%);
+    cursor: pointer;
+}
+.action-icon{
+    margin-right: 10px;
+}
+.repliesList{
+    width: 100%;
+}
+.replies{
+    display: flex;
+    width:calc(52% - 7%);
+    border-left: 2px solid hsl(223, 19%, 93%);
+    margin-left: 2rem;
+    padding-left: 3rem;
+}
+.replyComment{
+    display: flex;
+    border-radius: 7px;
+    width: 100%;
+    background-color: white;
+    margin: 10px;
+    box-sizing: content-box;
+}
+.youtag{
+    background-color: hsl(238, 40%, 52%);
+    color: white;
+    margin-right: 15px;
+    padding: 2px 4px;
+    font-size: 11px;
+    font-weight: 500;
+}
+.deleteAction{
+    font-weight: 500;
+    color: hsl(358, 79%, 66%);
+    margin-right: 15px;
+}
+.deleteAction:hover{
+    cursor: pointer;
+    color:hsl(357, 100%, 86%);
+}
+.youaction{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 1.5rem;
+}
+.inputEditComment{
+    border: 1px solid hsl(223, 19%, 93%);
+    font-family: 'Rubik', sans-serif;
+    padding: 1rem;
+    border-radius: 5px;
+    resize: none;
+    width: -webkit-fill-available;
+    height: 50px;
+}
+.inputEditComment:hover{
+    cursor: pointer;
+    border: 1px solid hsl(238, 40%, 52%);
+  }
+.editContent{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: hsl(211, 10%, 45%);
+    margin-left: 10px;
+    margin-right: 15px;
+    box-sizing: content-box;
+}
+.addReply {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    border-radius: 7px;
+    width: 100%;
+    height: 90px;
+    background-color: white;
+    margin: 5px;
+    padding: 20px 2px;
+  }
