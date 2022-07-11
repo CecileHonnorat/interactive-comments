@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![preview](https://github.com/CecileHonnorat/interactive-comments/blob/master/public/images/active-states.jpg)
 
 
 ### Links
