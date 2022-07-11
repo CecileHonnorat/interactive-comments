@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../styles/comment.css';
 import data from '../data.json';
 import AddReply from './AddReply';
+import Modal from './Modal';
+import useModal from '../hooks/useModal';
 
 export default function Reply(props) {
 
@@ -9,6 +11,8 @@ export default function Reply(props) {
     const [likeReply, setLikeReply] = useState(props.score);
     const [reply, setReply] = useState(false)
     const [edit, setEdit] = useState(false)
+    const {isShowing, toggle} = useModal();
+    const {contentUpdate, setContentUpdate} = useState('')
 
     //Get the date in a good format:
     let dateFormat = function (date) {
@@ -23,7 +27,10 @@ export default function Reply(props) {
         tagYou = (<p className='youtag'>you</p>)
         actionBtn = (<div className='youaction'>
             <img src='../images/icon-delete.svg' alt='delete' className='action-icon' />
-            <p className='deleteAction'>Delete</p>
+            <p className='deleteAction'
+            onClick={toggle}
+            >Delete</p>
+            <Modal isShowing={isShowing} hide={toggle} replyID={props.replyID}/>
             <img src='../images/icon-edit.svg' alt='edit' className='action-icon' />
             <p className='action'
                 onClick={() => updateComment()}>Edit</p>
@@ -44,10 +51,20 @@ export default function Reply(props) {
     }
     if (edit === true) {
         editComment = (<div className='editContent'><textarea
-            placeholder={props.content}
             className='inputEditComment'
-        ></textarea>
-            <button style={{ alignItems: "flex-end", margin: '15px', }}>UPDATE</button></div>)
+            value={contentUpdate}
+            onChange={(e) => setContentUpdate(e.target.value)}
+        >{props.content}</textarea>
+            <button style={{ alignItems: "flex-end", margin: '15px', }}
+            onClick={async()=> {
+                const request = await fetch(`/edit-content/`, {
+                    method:  "PUT",
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `id=${props._id}&content=${contentUpdate}`
+                })
+                const data = await request.json()
+            }}
+            >UPDATE</button></div>)
     } else {
         editComment = (<div className='content'>
             <p><span style={{ color: 'hsl(238, 40%, 52%)', fontWeight: '500' }}>@{props.replyingTo} </span>{props.content}</p>

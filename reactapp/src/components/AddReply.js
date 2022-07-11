@@ -18,7 +18,7 @@ export default function AddComment(props){
             body: `content=${content}&userID=62bd7285235f78260ecd9cea&score=0&replyingTo=${replyingTo}`
         })
         const body = await replyData.json()
-        dispatch({type:'addReply', comment : body.replySaved})
+        dispatch({type:'addReply', reply : body.replySaved})
         setContent('')
     }
 

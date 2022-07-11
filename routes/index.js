@@ -111,6 +111,23 @@ router.get('/get-comments/', async function (req, res, next){
 })
 
 // Edit Comment 
+router.put('/edit-content', async function(req, res, next){
+  console.log(req.body)
+let reply = await replyModel.updateOne(
+  {_id: req.body.id},
+  {content: req.body.content}
+)
 
+replyUpdate = await replyModel.findById(req.body.id).exec()
 
+res.json({agendaUpdate})
+})
+
+// Delete reply
+router.delete('/delete-reply/:replyID', async function(req, res, next){
+  let replies = await replyModel.deleteOne({_id: req.params.replyID})
+
+  console.log(req.params)
+  res.json(replies)
+})
 module.exports = router;

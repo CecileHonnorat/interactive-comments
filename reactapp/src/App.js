@@ -15,16 +15,12 @@ function App() {
   const dispatch = useDispatch()
 
   const comments = useSelector(state => state.commentsList)
-  const [allComments, setAllComments] = useState([])
-  const [allReplies, setAllReplies] = useState([])
 
   useEffect(()=> {
     const loadData = async () => {
       const rawData = await fetch(`/get-comments/`);
       const data = await rawData.json();
       dispatch({ type : 'loadList', list: data.comments})
-      setAllComments(data.comments);
-      setAllReplies(data.replies);
     }
     loadData();
   }, [])

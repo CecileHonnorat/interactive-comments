@@ -5,7 +5,12 @@ import '../styles/comment.css';
 import AddReply from './AddReply';
 import Reply from './Reply';
 
+// Redux and Reducers ...
+import {useSelector, useDispatch} from 'react-redux';
+
 export default function Comment(props) {
+
+    const dispatch = useDispatch()
 
     //Get the date in a good format:
     let dateFormat = function (date) {
@@ -15,13 +20,15 @@ export default function Comment(props) {
 
     const [like, setLike] = useState(props.score)
     const [reply, setReply] = useState(false)
-    const [allReplies, setAllReplies] = useState([])
+    const allReplies = useSelector(state => state.repliesList)
 
+    console.log(allReplies)
+    
     useEffect(() => {
         const loadData = async () => {
             const rawData = await fetch(`/get-comments/`);
             const data = await rawData.json();
-            setAllReplies(data.replies)
+            dispatch({type : 'loadRepliesList', list: data.replies})
         }
         loadData();
     }, [])
@@ -56,7 +63,7 @@ export default function Comment(props) {
         }
         return (
             <div className='replies'>
-                <Reply userName={userRepName} createdAt={rep.createdAt} content={rep.content} replyingTo={replyingToName} score={rep.score} avatar={avatarRep} commentID={rep.id}/>
+                <Reply userName={userRepName} createdAt={rep.createdAt} content={rep.content} replyingTo={replyingToName} score={rep.score} avatar={avatarRep} commentID={rep.id} replyID={rep._id}/>
             </div>)
     })
 
